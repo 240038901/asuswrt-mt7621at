@@ -4039,11 +4039,10 @@ int init_nvram(void)
 		nvram_set_int("led_pwr_gpio", 15|GPIO_ACTIVE_LOW);
 		nvram_set_int("led_5g_gpio", 17|GPIO_ACTIVE_LOW);
 		nvram_set_int("led_2g_gpio", 13|GPIO_ACTIVE_LOW);
+		nvram_set_int("btn_rst_gpio", 18|GPIO_ACTIVE_LOW);
 		nvram_set("ehci_ports", "1-1 1-2");
-		nvram_set("ohci_ports", "2-1 2-2");
-
-                nvram_set_int("led_pwr_gpio",  6|GPIO_ACTIVE_LOW);		
-                nvram_set_int("btn_rst_gpio", 18|GPIO_ACTIVE_LOW);
+		nvram_set("ohci_ports", "2-1 2-2");               		
+                
                 config_netdev_bled("led_2g_gpio", "ra0");
 		config_netdev_bled("led_5g_gpio", "rai0");
 		config_usbbus_bled("led_usb_gpio", "1 2");
