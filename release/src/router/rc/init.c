@@ -4033,15 +4033,22 @@ int init_nvram(void)
 
 		set_basic_ifname_vars("eth3", "vlan1", wl_ifaces, "usb", "vlan1", NULL, "vlan3", NULL, 0);
 		add_rc_support("2.4G 5G noupdate usbX2");
-
-                nvram_set_int("led_pwr_gpio",  6|GPIO_ACTIVE_LOW);
-		nvram_set_int("led_wan_gpio",  7|GPIO_ACTIVE_LOW);
-                nvram_set_int("btn_rst_gpio", 18|GPIO_ACTIVE_LOW);
-
-		eval("rtkswitch", "11");
-
+		nvram_set_int("led_usb_gpio", 14|GPIO_ACTIVE_LOW);
+		nvram_set_int("pwr_usb_gpio", 16);
+		nvram_set_int("pwr_usb_gpio_on", 1);
+		nvram_set_int("led_pwr_gpio", 15|GPIO_ACTIVE_LOW);
+		nvram_set_int("led_5g_gpio", 17|GPIO_ACTIVE_LOW);
+		nvram_set_int("led_2g_gpio", 13|GPIO_ACTIVE_LOW);
 		nvram_set("ehci_ports", "1-1 1-2");
 		nvram_set("ohci_ports", "2-1 2-2");
+
+                nvram_set_int("led_pwr_gpio",  6|GPIO_ACTIVE_LOW);		
+                nvram_set_int("btn_rst_gpio", 18|GPIO_ACTIVE_LOW);
+                config_netdev_bled("led_2g_gpio", "ra0");
+		config_netdev_bled("led_5g_gpio", "rai0");
+		config_usbbus_bled("led_usb_gpio", "1 2");
+			
+		eval("rtkswitch", "11");
 		nvram_set("ct_max", "300000"); // force
 
 		add_rc_support("mssid");
