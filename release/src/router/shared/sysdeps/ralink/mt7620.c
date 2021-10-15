@@ -185,11 +185,11 @@ enum {
 #define MT7621_GSW
 #elif defined(RTHIWIFI4) || defined(RTNEWIFI2)
 enum {
-	WAN_PORT=4,
+	WAN_PORT=0,
 	LAN1_PORT=1,
 	LAN2_PORT=2,
 	LAN3_PORT=3, 
-	LAN4_PORT=0, //unused
+	LAN4_PORT=4, //unused
 	P5_PORT=5,
 	CPU_PORT=6,
 	P7_PORT=7,
